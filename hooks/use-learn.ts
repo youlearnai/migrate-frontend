@@ -34,7 +34,7 @@ export const useLearnStore = create<LearnStore>((set, get) => {
       wavStreamPlayerRef.current = new WavStreamPlayer({ sampleRate: 24000 });
     }
 
-    const handleError = (event: Error) => {};
+    const handleError = (event: Error) => { };
 
     const handleInterrupted = async () => {
       const trackSampleOffset = await wavStreamPlayerRef.current?.interrupt();
@@ -59,6 +59,7 @@ export const useLearnStore = create<LearnStore>((set, get) => {
       }
 
       if (delta?.audio) {
+        // @ts-ignore
         wavStreamPlayerRef.current.add16BitPCM(delta.audio, item.id);
       }
 
@@ -254,7 +255,7 @@ export const useLearnStore = create<LearnStore>((set, get) => {
           concepts: null,
           whiteboard: null,
         });
-      } catch (error) {}
+      } catch (error) { }
     },
 
     handleStop: async () => {
@@ -276,7 +277,7 @@ export const useLearnStore = create<LearnStore>((set, get) => {
           concepts: null,
           whiteboard: null,
         });
-      } catch (error) {}
+      } catch (error) { }
     },
   };
 });
