@@ -182,6 +182,7 @@ const ResponseChunkComponent: React.FC<{
   );
 
   return (
+    // @ts-ignore
     <Markdown type={type} className="inline" components={sourcesRenderer}>
       {chunk.content}
     </Markdown>
@@ -405,11 +406,9 @@ const concatenateChunks = (
 
   return {
     ...lastChunk,
-    content: `${lastChunk.content}${
-      newChunk.content ? ` ${newChunk.content.slice(0, -1)}` : ""
-    }${bboxString}${sourceString}${
-      newChunk.content ? newChunk.content.slice(-1) : ""
-    }`,
+    content: `${lastChunk.content}${newChunk.content ? ` ${newChunk.content.slice(0, -1)}` : ""
+      }${bboxString}${sourceString}${newChunk.content ? newChunk.content.slice(-1) : ""
+      }`,
   };
 };
 
@@ -541,8 +540,8 @@ const GenUI: React.FC<{
 
   const contentString = chunks
     ? chunks
-        .map((chunk) => (chunk.type === "response" ? chunk.content : ""))
-        .join(" ")
+      .map((chunk) => (chunk.type === "response" ? chunk.content : ""))
+      .join(" ")
     : "";
 
   if (!chunks || isContentLoading) return null;
