@@ -809,6 +809,7 @@ const Markdown: FC<
         {...props}
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, rehypeInlineCodeProperty]}
+        // @ts-ignore
         components={components}
         skipHtml={false}
       >
@@ -877,13 +878,13 @@ const SpaceTooltip: FC<
                   className="cursor-pointer font-medium rounded-sm text-foreground/80 bg-foreground/5"
                 >
                   {isVideoType(fetchedContent.type as ContentType) ||
-                  isAudioType(fetchedContent.type as ContentType)
+                    isAudioType(fetchedContent.type as ContentType)
                     ? formatMilliseconds(
-                        Number.parseFloat(sourceNumber as string),
-                      )
+                      Number.parseFloat(sourceNumber as string),
+                    )
                     : t("flashcards.page") +
-                      " " +
-                      parseInt(sourceNumber as string)}
+                    " " +
+                    parseInt(sourceNumber as string)}
                 </Badge>
               )}
             </div>
