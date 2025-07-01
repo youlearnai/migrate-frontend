@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>YouLearn</ShortName>
+  <Description>Add content to YouLearn</Description>
+  <Tags>websites, YouTube videos, PDFs, content</Tags>
+  <Contact>hello@youlearn.ai</Contact>
+  <Url type="text/html" template="https://app.youlearn.ai/add/{searchTerms}"/>
+  <Image height="16" width="16" type="image/x-icon">https://app.youlearn.ai/favicon.ico</Image>
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+</OpenSearchDescription> 

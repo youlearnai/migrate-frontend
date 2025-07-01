@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 0 0% 9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .glow {
+    @apply bg-transparent hover:bg-[#3CB371]/10 dark:hover:bg-[#3CB371]/20 border-2 font-normal border-[#3CB371]/80 dark:border-[#3CB371] text-[#3CB371] dark:text-[#3CB371] shadow-[#3CB371]/20 shadow-lg;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .perspective {
+    perspective: 3000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+    transform: rotateY(0deg);
+  }
+
+  .rotate-y-180 {
+    transform: rotateX(180deg);
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .text-shimmer {
+    @apply font-medium text-base;
+    background: linear-gradient(90deg, 
+      hsl(0, 0%, 75%) 0%, 
+      hsl(0, 0%, 75%) 30%, 
+      hsl(0, 0%, 50%) 45%, 
+      hsl(0, 0%, 50%) 50%, 
+      hsl(0, 0%, 50%) 55%, 
+      hsl(0, 0%, 75%) 70%, 
+      hsl(0, 0%, 75%) 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmer 1.5s linear infinite;
+  }
+
+  .dark .text-shimmer {
+    @apply font-medium text-base;
+    background: linear-gradient(90deg, 
+      hsl(0, 0%, 25%) 0%, 
+      hsl(0, 0%, 25%) 30%, 
+      hsl(0, 0%, 50%) 45%, 
+      hsl(0, 0%, 50%) 50%, 
+      hsl(0, 0%, 50%) 55%, 
+      hsl(0, 0%, 25%) 70%, 
+      hsl(0, 0%, 25%) 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmer 1.5s linear infinite;
+  }
+}
+
+.bn-container {
+  background: transparent !important;
+}
+
+.bn-editor {
+  background: transparent !important;
+}
+
+/* Dark mode text colors */
+.dark .bn-editor {
+  color: #ffffff !important;
+}
+
+.dark .bn-editor [data-placeholder]:empty:before {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.lk-audio-bar-visualizer {
+  gap: 10px !important;
+
+  & > .lk-audio-bar {
+    /* aspect-ratio: 1/1; */
+    /* width: auto !important; */
+    background-color: rgba(0, 0, 0, 0.05) !important;
+  }
+
+  &[data-lk-va-state='speaking'] > .lk-audio-bar,
+  & > .lk-audio-bar.lk-highlighted,
+  & > [data-lk-highlighted='true'] {
+    @apply bg-black !important;
+  }
+
+  & > [data-lk-highlighted='false'] {
+    @apply bg-black/10 !important;
+  }
+}
+
+/* Green colors only for the AI voice (agent-visualizer) */
+.agent-visualizer.lk-audio-bar-visualizer {
+  gap: 10px !important;
+  
+  & > .lk-audio-bar {
+    background-color: rgba(34, 197, 94, 0.2) !important; /* Light green background */
+  }
+
+  &[data-lk-va-state='speaking'] > .lk-audio-bar,
+  & > .lk-audio-bar.lk-highlighted,
+  & > [data-lk-highlighted='true'] {
+    @apply bg-green-500 !important; /* Bright green for active bars */
+  }
+
+  & > [data-lk-highlighted='false'] {
+    @apply bg-green-500/20 !important; /* Semi-transparent green for inactive */
+  }
+}
+
+.dark .lk-audio-bar-visualizer {
+  & > .lk-audio-bar {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  &[data-lk-va-state='speaking'] > .lk-audio-bar,
+  & > .lk-audio-bar.lk-highlighted,
+  & > [data-lk-highlighted='true'] {
+    @apply bg-white !important;
+  }
+
+  & > [data-lk-highlighted='false'] {
+    @apply bg-white/10 !important;
+  }
+}
+
+/* Green colors only for the AI voice (agent-visualizer) in dark mode */
+.dark .agent-visualizer.lk-audio-bar-visualizer {
+  & > .lk-audio-bar {
+    background-color: rgba(34, 197, 94, 0.2) !important; /* Light green in dark mode */
+  }
+
+  &[data-lk-va-state='speaking'] > .lk-audio-bar,
+  & > .lk-audio-bar.lk-highlighted,
+  & > [data-lk-highlighted='true'] {
+    @apply bg-green-500 !important; /* Bright green for active bars in dark mode */
+  }
+
+  & > [data-lk-highlighted='false'] {
+    @apply bg-green-500/20 !important; /* Semi-transparent green for inactive in dark mode */
+  }
+}
+
+/* Mention dropdown section headers */
+/* To add a new section:
+   1. Add to MENTION_SECTIONS in lib/utils.ts
+   2. Add CSS below following this pattern:
+   .mention-[SECTION_TYPE]-first { ... }
+   .mention-[SECTION_TYPE]-first::before { content: "[HEADER_TEXT]"; ... }
+*/
+
+.mention-tool-first {
+  position: relative;
+  margin-top: 2rem !important;
+}
+
+.mention-tool-first::before {
+  content: "TOOLS";
+  position: absolute;
+  top: -1.5rem;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
+}
+
+.mention-content-first {
+  position: relative;
+  margin-top: 2rem !important;
+}
+
+.mention-content-first::before {
+  content: "CONTENTS";
+  position: absolute;
+  top: -1.5rem;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
+}
+
+/* Timeline animations */
+.timeline-item.timeline-item-show {
+  @apply opacity-100 translate-y-0;
+}
+
+.timeline-item.timeline-item-show .timeline-dot {
+  @apply border-neutral-400 dark:border-neutral-600;
+}
+
+/* Responsive timeline line positioning */
+@media (max-width: 768px) {
+    .timeline-line {
+      left: 2rem !important;
+      transform: none !important;
+    }
+  }
