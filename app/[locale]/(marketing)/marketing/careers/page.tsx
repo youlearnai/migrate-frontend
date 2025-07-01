@@ -11,11 +11,10 @@ export const metadata: Metadata = {
 
 const namespaces = ["default"];
 
-export default async function CareersPage({
-  params,
-}: {
-  params: { locale: string };
+export default async function MarketingCareers(props: {
+  params: Promise<{ locale: string }>;
 }) {
+  const params = await props.params;
   const { locale } = params;
   const { t } = await initTranslations(locale, namespaces);
 
